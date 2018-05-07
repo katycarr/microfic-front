@@ -14,9 +14,8 @@ function withAuth(WrappedComponent) {
       try {
         const value = await AsyncStorage.getItem('token');
         if (!value) {
-          this.props.navigation.navigate('Login')
+          this.props.navigation.navigate('UserOptions')
         } else if (value !== null) {
-          console.log(value)
           this.props.getUser(value);
         }
       } catch (error) {

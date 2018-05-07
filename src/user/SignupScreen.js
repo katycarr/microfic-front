@@ -1,13 +1,13 @@
 import React from 'react'
-import {View, Text, TextInput, Button} from 'react-native'
-import { connect } from 'react-redux'
-import { loginUser } from '../actions/auth'
+import {View, TextInput, Text, Button} from 'react-native'
 import t from 'tcomb-form-native'
+import { connect } from 'react-redux'
+import { signupUser } from '../actions/auth'
 
 const Form = t.form.Form;
 
 const options = {
-  label: 'Login',
+  label: 'Signup',
   auto: 'placeholders',
   fields: {
     username: {
@@ -16,24 +16,28 @@ const options = {
     password: {
       autoCapitalize: 'none',
       secureTextEntry: true
+    },
+    passwordConfirmation: {
+      autoCapitalize: 'none',
+      secureTextEntry: true
     }
   }
 }
 
 const User = t.struct({
   username: t.String,
-  password: t.String
+  password: t.String,
+  passwordConfirmation: t.String
 })
 
-class LoginScreen extends React.Component {
+class SignupScreen extends React.Component {
 
   handleSubmit = () => {
     const value = this._form.getValue()
-    this.props.loginUser(value)
+    this.props.signupUser(value)
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
     nextProps.user && this.props.navigation.navigate('Profile')
   }
 
@@ -58,4 +62,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {loginUser})(LoginScreen)
+export default connect(mapStateToProps, {signupUser})(SignupScreen)
