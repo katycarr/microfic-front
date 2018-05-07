@@ -22,6 +22,11 @@ class Footer extends React.Component {
           title='Profile'
           onPress={() => this.props.navigation.navigate('Profile')}
         />
+        <Button
+          style={styles.button}
+          title='Write'
+          onPress={() => this.props.navigation.navigate('NewFic')}
+        />
       </View>
     )
   }

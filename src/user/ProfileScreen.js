@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View } from 'react-native'
 import withAuth from '../hocs/withAuth'
 import LogoutButton from './buttons/Logout'
+import Footer from '../Footer'
 
 
 class ProfileScreen extends React.Component {
@@ -15,9 +16,10 @@ class ProfileScreen extends React.Component {
     return(
       <View>
         <Text>
-          Profile
+          Hi, {this.props.user.username}
         </Text>
         <LogoutButton />
+        <Footer />
       </View>
     )
   }

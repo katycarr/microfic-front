@@ -24,6 +24,7 @@ export const getUser = (token) => {
     })
     .then(res => res.json())
     .then(json => {
+      console.log(json)
       if (json["error"]) {
         console.log(json)
       } else {
@@ -54,7 +55,7 @@ export const loginUser = ({username, password}) => {
       .then(json => {
         setToken(json.token)
         dispatch({
-          type: 'LOGIN_DONE',
+          type: 'GET_USER_DONE',
           payload: json.user
         })
       })
@@ -79,7 +80,7 @@ export const signupUser = ({username, password}) => {
       .then(json => {
         setToken(json.token)
         dispatch({
-          type: 'LOGIN_DONE',
+          type: 'GET_USER_DONE',
           payload: json.user
         })
       })

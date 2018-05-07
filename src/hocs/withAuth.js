@@ -7,7 +7,8 @@ import { withNavigation } from 'react-navigation'
 function withAuth(WrappedComponent) {
   class AuthComponent extends React.Component {
     state = {
-      authDone: this.props.loggedIn
+      authDone: this.props.loggedIn,
+      token: null
     }
 
     async getToken() {
@@ -17,6 +18,7 @@ function withAuth(WrappedComponent) {
           this.props.navigation.navigate('UserOptions')
         } else if (value !== null) {
           this.props.getUser(value);
+          this.setState({token:value})
         }
       } catch (error) {
         console.log(error)
@@ -39,7 +41,7 @@ function withAuth(WrappedComponent) {
 
     render() {
       if(this.state.authDone) {
-        return <WrappedComponent {...this.props} />
+        return <WrappedComponent {...this.props} token={this.state.token}/>
       } else {
         return <Text>LOADING</Text>
       }

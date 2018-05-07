@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, TextInput, Button} from 'react-native'
+import {View, Button} from 'react-native'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions/auth'
 import t from 'tcomb-form-native'

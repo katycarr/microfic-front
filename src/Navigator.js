@@ -5,6 +5,7 @@ import UserOptionsScreen from './user/OptionsScreen'
 import ProfileScreen from './user/ProfileScreen'
 import LoginScreen from './user/LoginScreen'
 import SignupScreen from './user/SignupScreen'
+import NewStoryForm from './story/new/Form'
 
 const BaseNavigation = StackNavigator({
   Home: {screen: StoryIndexContainer },
@@ -12,7 +13,8 @@ const BaseNavigation = StackNavigator({
   UserOptions: {screen: UserOptionsScreen},
   Profile: {screen: ProfileScreen},
   Login: {screen: LoginScreen},
-  Signup: {screen: SignupScreen}
+  Signup: {screen: SignupScreen},
+  NewFic: {screen: NewStoryForm}
 });
 
 export default BaseNavigation;
