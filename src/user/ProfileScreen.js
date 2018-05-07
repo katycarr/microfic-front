@@ -4,6 +4,7 @@ import { Text, View } from 'react-native'
 import withAuth from '../hocs/withAuth'
 import LogoutButton from './buttons/Logout'
 import Footer from '../Footer'
+import {styles} from './ProfileStyle'
 
 
 class ProfileScreen extends React.Component {
@@ -14,7 +15,7 @@ class ProfileScreen extends React.Component {
 
   render() {
     return(
-      <View>
+      <View style={styles.view}>
         <Text>
           Hi, {this.props.user.username}
         </Text>

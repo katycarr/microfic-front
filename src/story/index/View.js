@@ -1,19 +1,25 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableHighlight } from 'react-native'
 import { styles } from './Style'
-import SeeStoryButton from '../buttons/SeeStory'
+import { withNavigation } from 'react-navigation'
+
+
 
 class StoryIndexView extends React.Component {
+  handlePress = () => {
+    this.props.navigation.navigate('Read', {story: this.props.story})
+  }
 
   render() {
     return (
-      <View style={styles.view}>
-        <Text style={styles.centerText}>{this.props.story.title}</Text>
-        <Text>{this.props.story.summary}</Text>
-        <SeeStoryButton story={this.props.story} />
-      </View>
+      <TouchableHighlight onPress={this.handlePress} >
+        <View style={styles.view}>
+          <Text style={styles.centerText}>{this.props.story.title}</Text>
+          <Text>{this.props.story.summary}</Text>
+        </View>
+      </TouchableHighlight>
     )
   }
 }
 
-export default StoryIndexView
+export default withNavigation(StoryIndexView)

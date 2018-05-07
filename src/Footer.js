@@ -14,11 +14,6 @@ class Footer extends React.Component {
         />
         <Button
           style={styles.button}
-          title='Login'
-          onPress={() => this.props.navigation.navigate('Login')}
-        />
-        <Button
-          style={styles.button}
           title='Profile'
           onPress={() => this.props.navigation.navigate('Profile')}
         />

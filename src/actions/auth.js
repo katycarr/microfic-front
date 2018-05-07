@@ -24,7 +24,6 @@ export const getUser = (token) => {
     })
     .then(res => res.json())
     .then(json => {
-      console.log(json)
       if (json["error"]) {
         console.log(json)
       } else {
