@@ -3,6 +3,7 @@ import { Button } from 'react-native'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/auth'
 import { withNavigation } from 'react-navigation'
+import {compose} from 'redux'
 
 class LogoutButton extends React.Component {
   handlePress = () => {
@@ -20,4 +21,4 @@ class LogoutButton extends React.Component {
   }
 }
 
-export default withNavigation(connect(null, {logout})(LogoutButton))
+export default compose(withNavigation,connect(null, {logout}))(LogoutButton)

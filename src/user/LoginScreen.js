@@ -1,10 +1,9 @@
 import React from 'react'
-import {View, Button} from 'react-native'
-import { connect } from 'react-redux'
+import UserAuthContainer from './auth/Container'
+import UserAuthForm from './auth/Form'
 import { loginUser } from '../actions/auth'
-import t from 'tcomb-form-native'
+import { connect } from 'react-redux'
 
-const Form = t.form.Form;
 
 const options = {
   label: 'Login',
@@ -20,42 +19,18 @@ const options = {
   }
 }
 
-const User = t.struct({
-  username: t.String,
-  password: t.String
-})
 
 class LoginScreen extends React.Component {
-
-  handleSubmit = () => {
-    const value = this._form.getValue()
-    this.props.loginUser(value)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-    nextProps.user && this.props.navigation.navigate('Profile')
-  }
-
-
   render() {
     return(
-      <View>
-        <Form
-          type={User}
-          ref={c => this._form = c}
-          options={options}
-          />
-        <Button title='Submit' onPress={this.handleSubmit} />
-      </View>
+      <UserAuthContainer>
+        <UserAuthForm options={options}
+          fields={['username','password']}
+          handleSubmit={(value) => this.props.loginUser(value)}
+        />
+      </UserAuthContainer>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.authReducer.user
-  }
-}
-
-export default connect(mapStateToProps, {loginUser})(LoginScreen)
+export default connect(null, {loginUser})(LoginScreen)
