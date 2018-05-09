@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button } from 'react-native'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/auth'
 import { withNavigation } from 'react-navigation'
 import {compose} from 'redux'
+import {Button, Text} from 'native-base'
 
 class LogoutButton extends React.Component {
   handlePress = () => {
@@ -14,9 +14,12 @@ class LogoutButton extends React.Component {
   render() {
     return (
       <Button
-        title='Logout'
+        block
+        light
         onPress={this.handlePress}
-        />
+        >
+        <Text>Logout</Text>
+      </Button>
     )
   }
 }

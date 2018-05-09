@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { View } from 'react-native'
+// import { View } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import { compose } from 'redux'
+import { styles } from './Style'
+import { Container } from 'native-base'
 
 class UserAuthContainer extends React.Component {
 
@@ -12,9 +14,9 @@ class UserAuthContainer extends React.Component {
 
   render() {
     return(
-      <View>
+      <Container >
         {this.props.children}
-      </View>
+      </Container>
     )
   }
 }

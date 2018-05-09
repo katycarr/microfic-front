@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getUser} from '../actions/auth'
 import { AsyncStorage, Text } from 'react-native'
 import { withNavigation } from 'react-navigation'
+import { Spinner } from 'native-base'
 
 function withAuth(WrappedComponent) {
   class AuthComponent extends React.Component {
@@ -43,7 +44,7 @@ function withAuth(WrappedComponent) {
       if(this.state.authDone) {
         return <WrappedComponent {...this.props} token={this.state.token}/>
       } else {
-        return <Text>LOADING</Text>
+        return <Spinner />
       }
     }
   }

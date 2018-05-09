@@ -4,7 +4,8 @@ import { styles } from './Style'
 import StoryIndexView from './View'
 import { connect } from 'react-redux'
 import { fetchStories } from '../../actions/fics'
-import Footer from '../../Footer'
+import FooterBar from '../../Footer'
+import { Container, List, Spinner } from 'native-base'
 
 class StoryIndexContainer extends React.Component {
 
@@ -19,16 +20,19 @@ class StoryIndexContainer extends React.Component {
         return <StoryIndexView story={story} key={story.id} />
       })
       return(
-        <View>
+        <Container>
           <ScrollView contentContainerStyle={styles.contentContainer}>
-            {storyViews}
+            <List>
+              {storyViews}
+            </List>
+
           </ScrollView>
-          <Footer />
-        </View>
+          <FooterBar />
+        </Container>
       )
     } else {
       return (
-        <Text>Loading...</Text>
+        <Spinner />
       )
     }
 

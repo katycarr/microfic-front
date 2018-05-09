@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import { Text, View } from 'react-native'
 import withAuth from '../hocs/withAuth'
 import LogoutButton from './buttons/Logout'
-import Footer from '../Footer'
+import FooterBar from '../Footer'
 import {styles} from './ProfileStyle'
+import { Container, Content, H1} from 'native-base'
 
 
 class ProfileScreen extends React.Component {
@@ -15,13 +16,15 @@ class ProfileScreen extends React.Component {
 
   render() {
     return(
-      <View style={styles.view}>
-        <Text>
-          Hi, {this.props.user.username}
-        </Text>
-        <LogoutButton />
-        <Footer />
-      </View>
+      <Container>
+        <Content padder contentContainerStyle={styles.view}>
+          <H1>
+            {this.props.user.username}
+          </H1>
+          <LogoutButton />
+        </Content>
+        <FooterBar />
+      </Container>
     )
   }
 }

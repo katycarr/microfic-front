@@ -1,6 +1,7 @@
 import React from 'react'
 import t from 'tcomb-form-native'
-import { View, Button } from 'react-native'
+import { styles } from './Style'
+import { Content, Button, Text } from 'native-base'
 
 const Form = t.form.Form;
 class UserAuthForm extends React.Component {
@@ -19,14 +20,16 @@ class UserAuthForm extends React.Component {
     const User = t.struct(fieldObj)
 
     return (
-      <View>
+      <Content padder contentContainerStyle={styles.view}>
         <Form
           type={User}
           ref={c => this._form = c}
           options={this.props.options}
           />
-        <Button title='Submit' onPress={this.handlePress} />
-      </View>
+        <Button block onPress={this.handlePress}>
+          <Text>Submit</Text>
+        </Button>
+      </Content>
     )
   }
 }

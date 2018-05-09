@@ -1,30 +1,34 @@
 import React from 'react'
 import { withNavigation } from 'react-navigation'
-import { View, Button } from 'react-native'
+// import { View, Button } from 'react-native'
 import {styles} from './FooterStyle'
+import { Footer, FooterTab, Button, Text } from 'native-base'
 
-class Footer extends React.Component {
+class FooterBar extends React.Component {
   render() {
     return(
-      <View style={styles.view}>
-        <Button
-          style={styles.button}
-          title='Home'
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-        <Button
-          style={styles.button}
-          title='Profile'
-          onPress={() => this.props.navigation.navigate('Profile')}
-        />
-        <Button
-          style={styles.button}
-          title='Write'
-          onPress={() => this.props.navigation.navigate('NewFic')}
-        />
-      </View>
+      <Footer >
+        <FooterTab>
+          <Button
+            onPress={() => this.props.navigation.navigate('Home')}
+          >
+          <Text>Home</Text>
+        </Button>
+          <Button
+
+            onPress={() => this.props.navigation.navigate('Profile')}
+          >
+          <Text>Profile</Text>
+        </Button>
+          <Button
+            onPress={() => this.props.navigation.navigate('NewFic')}
+          >
+          <Text>Write</Text>
+        </Button>
+        </FooterTab>
+    </Footer>
     )
   }
 }
 
-export default withNavigation(Footer)
+export default withNavigation(FooterBar)
