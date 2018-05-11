@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native'
+import { baseUrl } from './base'
 
 async function setToken(value) {
   try {
@@ -17,7 +18,7 @@ export const logout = () => {
 
 export const getUser = (token) => {
   return (dispatch) => {
-    fetch('http://localhost:3000/get_user', {
+    fetch(baseUrl+'/get_user', {
       headers: {
         "Authorization": token
       }
@@ -49,7 +50,7 @@ export const loginUser = ({username, password}) => {
       },
       body: JSON.stringify({username, password})
     }
-    fetch('http://localhost:3000/login', options)
+    fetch(baseUrl+'/login', options)
       .then(res => res.json())
       .then(json => {
         setToken(json.token)
@@ -74,7 +75,7 @@ export const signupUser = ({username, password}) => {
       },
       body: JSON.stringify({user: {username, password}})
     }
-    fetch('http://localhost:3000/signup', options)
+    fetch(baseUrl+'/signup', options)
       .then(res => res.json())
       .then(json => {
         setToken(json.token)

@@ -1,9 +1,11 @@
+import { baseUrl } from './base'
+
 export const fetchStories = () => {
   return (dispatch) => {
     dispatch({
       type: 'FETCH_STORIES_START'
     })
-    fetch('http://localhost:3000/fics')
+    fetch(baseUrl+'/fics')
       .then(res => res.json())
       .then(json => {
         dispatch({
@@ -28,7 +30,7 @@ export const createFic = ({title, summary, story}, token) => {
       },
       body: JSON.stringify({fic: {title, summary, story}})
     }
-    fetch('http://localhost:3000/fics', options)
+    fetch(baseUrl+'/fics', options)
       .then(res => res.json())
       .then(json => {
         dispatch({
